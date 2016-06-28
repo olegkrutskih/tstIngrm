@@ -7,13 +7,20 @@
 //
 
 import UIKit
+import Alamofire
+import CoreData
+import SwiftyJSON
 
 class OAuthLoginViewController: UIViewController {
 
     @IBOutlet weak var webView: UIWebView!
+    
+    var oAuthLoginDelegate = OAuthLoginDelegate()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.webView.delegate = oAuthLoginDelegate
+        //self.webView.scalesPageToFit = true
         // Do any additional setup after loading the view.
     }
 
@@ -22,6 +29,19 @@ class OAuthLoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        webView.hidden = true
+        NSURLCache.sharedURLCache().removeAllCachedResponses()
+        if let cookies = NSHTTPCookieStorage.sharedHTTPCookieStorage().cookies {
+            for cookie in cookies {
+                NSHTTPCookieStorage.sharedHTTPCookieStorage().deleteCookie(cookie)
+            }
+        }
+        
+        let request = NSURLRequest(URL: Instagram.Router.requestOauthCode.URLRequest.URL!, cachePolicy: .ReloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 10.0)
+        self.webView.loadRequest(request)
+    }
 
     /*
     // MARK: - Navigation
@@ -33,4 +53,8 @@ class OAuthLoginViewController: UIViewController {
     }
     */
 
+}
+
+extension OAuthLoginViewController: UIWebViewDelegate {
+    
 }

@@ -9,13 +9,14 @@
 import Foundation
 import Alamofire
 import UIKit
+import CoreData
 
 struct Instagram {
     
     enum Router: URLRequestConvertible {
         static let baseURLString = "https://api.instagram.com"
         static let clientID = "f35f847705604853b22e652a0ac1adc0"
-        static let redirectURI = "krutskikh.ru"
+        static let redirectURI = "http://example.com/"
         static let clientSecret = "352c388272064b71858fd8d5c002bad9"
         
         case PopularPhotos(String, String)
@@ -78,4 +79,11 @@ extension Alamofire.Request {
         let failureReason = "Failed to create a valid Image from the response data"
         return Error.errorWithCode(NSURLErrorCannotDecodeContentData, failureReason: failureReason)
     }
+}
+
+class User: NSManagedObject {
+    
+    @NSManaged var userID: String
+    @NSManaged var accessToken: String
+    
 }

@@ -23,10 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, FICImageCacheDelegate {
         // Override point for customization after application launch.
         
         FastImageCacheHelper.setUp(self)
-        /*let navController = window!.rootViewController as! UINavigationController
-        let photoBrowserCollectionViewController = navController.topViewController as! PhotoBrowserCollectionViewController
-        photoBrowserCollectionViewController.coreDataStack = coreDataStack
-        */
+
         return true
     }
 

@@ -17,10 +17,14 @@
 		24387D481D22F34A00A29A1B /* FastImageCache.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24387D431D22F2F400A29A1B /* FastImageCache.framework */; };
 		24387D491D22F34A00A29A1B /* FastImageCache.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 24387D431D22F2F400A29A1B /* FastImageCache.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		24569AC51D23077800612056 /* OAuthLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24569AC41D23077800612056 /* OAuthLoginViewController.swift */; };
+		24569AD51D23097A00612056 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 247B3B1E1D22F61C00871490 /* SwiftyJSON.framework */; };
+		24569AD61D23097A00612056 /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 247B3B1E1D22F61C00871490 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		245BB5DE1D22F672001F33C2 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245BB5DD1D22F672001F33C2 /* CoreDataStack.swift */; };
 		245BB5EF1D22F6D8001F33C2 /* FastImageCacheHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245BB5EE1D22F6D8001F33C2 /* FastImageCacheHelper.swift */; };
 		245BB5F11D22F758001F33C2 /* PhotoInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245BB5F01D22F758001F33C2 /* PhotoInfo.swift */; };
 		245BB5F31D22F823001F33C2 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245BB5F21D22F823001F33C2 /* Common.swift */; };
+		2480D00F1D2312CF00530E65 /* OAuthLoginDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2480D00E1D2312CF00530E65 /* OAuthLoginDelegate.swift */; };
+		2480D0201D23204600530E65 /* tstIngrm.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2480D01E1D23204600530E65 /* tstIngrm.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +112,13 @@
 			remoteGlobalIDString = B2E567671B316D5800906840;
 			remoteInfo = FastImageCache;
 		};
+		24569AD71D23097A00612056 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 247B3B131D22F61C00871490 /* SwiftyJSON.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 2E4FEFDA19575BE100351305;
+			remoteInfo = "SwiftyJSON iOS";
+		};
 		247B3B1D1D22F61C00871490 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 247B3B131D22F61C00871490 /* SwiftyJSON.xcodeproj */;
@@ -168,6 +179,7 @@
 			files = (
 				24387D251D22F0C800A29A1B /* Alamofire.framework in Embed Frameworks */,
 				24387D491D22F34A00A29A1B /* FastImageCache.framework in Embed Frameworks */,
+				24569AD61D23097A00612056 /* SwiftyJSON.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -185,11 +197,13 @@
 		24387D0C1D22F0A600A29A1B /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = ../Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
 		24387D3C1D22F2F400A29A1B /* FastImageCache.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FastImageCache.xcodeproj; path = ../FastImageCache/FastImageCache/FastImageCache.xcodeproj; sourceTree = "<group>"; };
 		24569AC41D23077800612056 /* OAuthLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuthLoginViewController.swift; sourceTree = "<group>"; };
-		245BB5DD1D22F672001F33C2 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		245BB5DD1D22F672001F33C2 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataStack.swift; path = ../CoreDataStack.swift; sourceTree = "<group>"; };
 		245BB5EE1D22F6D8001F33C2 /* FastImageCacheHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FastImageCacheHelper.swift; sourceTree = "<group>"; };
 		245BB5F01D22F758001F33C2 /* PhotoInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoInfo.swift; sourceTree = "<group>"; };
 		245BB5F21D22F823001F33C2 /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		247B3B131D22F61C00871490 /* SwiftyJSON.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftyJSON.xcodeproj; path = ../SwiftyJSON/SwiftyJSON.xcodeproj; sourceTree = "<group>"; };
+		2480D00E1D2312CF00530E65 /* OAuthLoginDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuthLoginDelegate.swift; sourceTree = "<group>"; };
+		2480D01F1D23204600530E65 /* tstIngrm.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = tstIngrm.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,6 +213,7 @@
 			files = (
 				24387D241D22F0C800A29A1B /* Alamofire.framework in Frameworks */,
 				24387D481D22F34A00A29A1B /* FastImageCache.framework in Frameworks */,
+				24569AD51D23097A00612056 /* SwiftyJSON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,7 +223,6 @@
 		24387CEE1D22EF0600A29A1B = {
 			isa = PBXGroup;
 			children = (
-				245BB5DD1D22F672001F33C2 /* CoreDataStack.swift */,
 				247B3B131D22F61C00871490 /* SwiftyJSON.xcodeproj */,
 				24387D3C1D22F2F400A29A1B /* FastImageCache.xcodeproj */,
 				24387D0C1D22F0A600A29A1B /* Alamofire.xcodeproj */,
@@ -228,8 +242,11 @@
 		24387CF91D22EF0600A29A1B /* tstIngrm */ = {
 			isa = PBXGroup;
 			children = (
+				245BB5DD1D22F672001F33C2 /* CoreDataStack.swift */,
 				24387CFA1D22EF0600A29A1B /* AppDelegate.swift */,
 				24569AC41D23077800612056 /* OAuthLoginViewController.swift */,
+				2480D00E1D2312CF00530E65 /* OAuthLoginDelegate.swift */,
+				2480D01E1D23204600530E65 /* tstIngrm.xcdatamodeld */,
 				245BB5F21D22F823001F33C2 /* Common.swift */,
 				245BB5F01D22F758001F33C2 /* PhotoInfo.swift */,
 				245BB5EE1D22F6D8001F33C2 /* FastImageCacheHelper.swift */,
@@ -297,6 +314,7 @@
 			dependencies = (
 				24387D271D22F0C800A29A1B /* PBXTargetDependency */,
 				24387D4B1D22F34A00A29A1B /* PBXTargetDependency */,
+				24569AD81D23097A00612056 /* PBXTargetDependency */,
 			);
 			name = tstIngrm;
 			productName = tstIngrm;
@@ -491,8 +509,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2480D00F1D2312CF00530E65 /* OAuthLoginDelegate.swift in Sources */,
 				245BB5DE1D22F672001F33C2 /* CoreDataStack.swift in Sources */,
 				24569AC51D23077800612056 /* OAuthLoginViewController.swift in Sources */,
+				2480D0201D23204600530E65 /* tstIngrm.xcdatamodeld in Sources */,
 				24387CFD1D22EF0600A29A1B /* ViewController.swift in Sources */,
 				245BB5F31D22F823001F33C2 /* Common.swift in Sources */,
 				245BB5EF1D22F6D8001F33C2 /* FastImageCacheHelper.swift in Sources */,
@@ -513,6 +533,11 @@
 			isa = PBXTargetDependency;
 			name = FastImageCache;
 			targetProxy = 24387D4A1D22F34A00A29A1B /* PBXContainerItemProxy */;
+		};
+		24569AD81D23097A00612056 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "SwiftyJSON iOS";
+			targetProxy = 24569AD71D23097A00612056 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -671,6 +696,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		2480D01E1D23204600530E65 /* tstIngrm.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				2480D01F1D23204600530E65 /* tstIngrm.xcdatamodel */,
+			);
+			currentVersion = 2480D01F1D23204600530E65 /* tstIngrm.xcdatamodel */;
+			path = tstIngrm.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 24387CEF1D22EF0600A29A1B /* Project object */;
 }
