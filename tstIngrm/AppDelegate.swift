@@ -7,15 +7,26 @@
 //
 
 import UIKit
+import CoreData
+import Alamofire
+import FastImageCache
+
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, FICImageCacheDelegate {
 
     var window: UIWindow?
+    lazy var coreDataStack = CoreDataStack()
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        FastImageCacheHelper.setUp(self)
+        /*let navController = window!.rootViewController as! UINavigationController
+        let photoBrowserCollectionViewController = navController.topViewController as! PhotoBrowserCollectionViewController
+        photoBrowserCollectionViewController.coreDataStack = coreDataStack
+        */
         return true
     }
 
@@ -27,6 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        coreDataStack.saveContext()
     }
 
     func applicationWillEnterForeground(application: UIApplication) {
@@ -39,6 +51,42 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        coreDataStack.saveContext()
+    }
+    
+    //MARK: FICImageCacheDelegate
+    func imageCache(imageCache: FICImageCache!, wantsSourceImageForEntity entity: FICEntity!, withFormatName formatName: String!, completionBlock: FICImageRequestCompletionBlock!) {
+        if let entity = entity as? PhotoInfo {
+            let imageURL = entity.sourceImageURLWithFormatName(formatName)
+            let request = NSURLRequest(URL: imageURL)
+            
+            entity.request = Alamofire.request(.GET, request).validate(contentType: ["image/*"]).responseImage() {
+                (response) in
+                switch response.result {
+                case .Success(let image):
+                    completionBlock(image)
+                case .Failure:
+                    break;
+                }
+            }
+        }
+    }
+    
+    func imageCache(imageCache: FICImageCache!, cancelImageLoadingForEntity entity: FICEntity!, withFormatName formatName: String!) {
+        
+        if let entity = entity as? PhotoInfo, request = entity.request {
+            request.cancel()
+            entity.request = nil
+            //debugPrint("be canceled:\(entity.UUID)")
+        }
+    }
+    
+    func imageCache(imageCache: FICImageCache!, shouldProcessAllFormatsInFamily formatFamily: String!, forEntity entity: FICEntity!) -> Bool {
+        return true
+    }
+    
+    func imageCache(imageCache: FICImageCache!, errorDidOccurWithMessage errorMessage: String!) {
+        debugPrint("errorMessage" + errorMessage)
     }
 
 
