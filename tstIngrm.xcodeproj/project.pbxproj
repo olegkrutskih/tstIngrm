@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		24387CFB1D22EF0600A29A1B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24387CFA1D22EF0600A29A1B /* AppDelegate.swift */; };
-		24387CFD1D22EF0600A29A1B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24387CFC1D22EF0600A29A1B /* ViewController.swift */; };
+		24387CFD1D22EF0600A29A1B /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24387CFC1D22EF0600A29A1B /* SearchViewController.swift */; };
 		24387D001D22EF0600A29A1B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24387CFE1D22EF0600A29A1B /* Main.storyboard */; };
 		24387D021D22EF0600A29A1B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24387D011D22EF0600A29A1B /* Assets.xcassets */; };
 		24387D051D22EF0600A29A1B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24387D031D22EF0600A29A1B /* LaunchScreen.storyboard */; };
@@ -25,6 +25,9 @@
 		245BB5F31D22F823001F33C2 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245BB5F21D22F823001F33C2 /* Common.swift */; };
 		2480D00F1D2312CF00530E65 /* OAuthLoginDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2480D00E1D2312CF00530E65 /* OAuthLoginDelegate.swift */; };
 		2480D0201D23204600530E65 /* tstIngrm.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2480D01E1D23204600530E65 /* tstIngrm.xcdatamodeld */; };
+		2480D0221D244C7800530E65 /* GalleryCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2480D0211D244C7800530E65 /* GalleryCollectionViewController.swift */; };
+		2480D0241D245C1C00530E65 /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2480D0231D245C1C00530E65 /* GalleryViewController.swift */; };
+		2480D0261D2468C100530E65 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2480D0251D2468C100530E65 /* TableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -189,7 +192,7 @@
 /* Begin PBXFileReference section */
 		24387CF71D22EF0600A29A1B /* tstIngrm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tstIngrm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		24387CFA1D22EF0600A29A1B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		24387CFC1D22EF0600A29A1B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		24387CFC1D22EF0600A29A1B /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		24387CFF1D22EF0600A29A1B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		24387D011D22EF0600A29A1B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		24387D041D22EF0600A29A1B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -204,6 +207,9 @@
 		247B3B131D22F61C00871490 /* SwiftyJSON.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftyJSON.xcodeproj; path = ../SwiftyJSON/SwiftyJSON.xcodeproj; sourceTree = "<group>"; };
 		2480D00E1D2312CF00530E65 /* OAuthLoginDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuthLoginDelegate.swift; sourceTree = "<group>"; };
 		2480D01F1D23204600530E65 /* tstIngrm.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = tstIngrm.xcdatamodel; sourceTree = "<group>"; };
+		2480D0211D244C7800530E65 /* GalleryCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryCollectionViewController.swift; sourceTree = "<group>"; };
+		2480D0231D245C1C00530E65 /* GalleryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
+		2480D0251D2468C100530E65 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -246,12 +252,15 @@
 				24387CFA1D22EF0600A29A1B /* AppDelegate.swift */,
 				24569AC41D23077800612056 /* OAuthLoginViewController.swift */,
 				2480D00E1D2312CF00530E65 /* OAuthLoginDelegate.swift */,
+				2480D0231D245C1C00530E65 /* GalleryViewController.swift */,
 				2480D01E1D23204600530E65 /* tstIngrm.xcdatamodeld */,
 				245BB5F21D22F823001F33C2 /* Common.swift */,
 				245BB5F01D22F758001F33C2 /* PhotoInfo.swift */,
 				245BB5EE1D22F6D8001F33C2 /* FastImageCacheHelper.swift */,
-				24387CFC1D22EF0600A29A1B /* ViewController.swift */,
+				24387CFC1D22EF0600A29A1B /* SearchViewController.swift */,
+				2480D0251D2468C100530E65 /* TableViewController.swift */,
 				24387CFE1D22EF0600A29A1B /* Main.storyboard */,
+				2480D0211D244C7800530E65 /* GalleryCollectionViewController.swift */,
 				24387D011D22EF0600A29A1B /* Assets.xcassets */,
 				24387D031D22EF0600A29A1B /* LaunchScreen.storyboard */,
 				24387D061D22EF0600A29A1B /* Info.plist */,
@@ -509,11 +518,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2480D0241D245C1C00530E65 /* GalleryViewController.swift in Sources */,
 				2480D00F1D2312CF00530E65 /* OAuthLoginDelegate.swift in Sources */,
 				245BB5DE1D22F672001F33C2 /* CoreDataStack.swift in Sources */,
 				24569AC51D23077800612056 /* OAuthLoginViewController.swift in Sources */,
 				2480D0201D23204600530E65 /* tstIngrm.xcdatamodeld in Sources */,
-				24387CFD1D22EF0600A29A1B /* ViewController.swift in Sources */,
+				24387CFD1D22EF0600A29A1B /* SearchViewController.swift in Sources */,
+				2480D0221D244C7800530E65 /* GalleryCollectionViewController.swift in Sources */,
+				2480D0261D2468C100530E65 /* TableViewController.swift in Sources */,
 				245BB5F31D22F823001F33C2 /* Common.swift in Sources */,
 				245BB5EF1D22F6D8001F33C2 /* FastImageCacheHelper.swift in Sources */,
 				24387CFB1D22EF0600A29A1B /* AppDelegate.swift in Sources */,

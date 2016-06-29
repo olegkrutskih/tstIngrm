@@ -15,6 +15,7 @@ import SwiftyJSON
 class OAuthLoginDelegate: NSObject, UIWebViewDelegate {
     
     var coreDataStack = (UIApplication.sharedApplication().delegate as! AppDelegate).coreDataStack
+    let notificationCenter = NSNotificationCenter.defaultCenter()
     
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
         //debugPrint(request.URLString)
@@ -46,7 +47,9 @@ class OAuthLoginDelegate: NSObject, UIWebViewDelegate {
                         user.userID = userID
                         user.accessToken = accessToken
                         self.coreDataStack.saveContext()
-                        //self.performSegueWithIdentifier("unwindToPhotoBrowser", sender: ["user": user])
+                        self.notificationCenter.postNotificationName("loginEvent", object: nil, userInfo: ["userID": userID, "accessToken": accessToken])
+
+                        
                         
                     }
                 case .Failure(let error):

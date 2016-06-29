@@ -20,6 +20,7 @@ struct Instagram {
         static let clientSecret = "352c388272064b71858fd8d5c002bad9"
         
         case PopularPhotos(String, String)
+        case SearchUsers(String, String)
         case requestOauthCode
         
         static func requestAccessTokenURLStringAndParms(code: String) -> (URLString: String, Params: [String: AnyObject]) {
@@ -39,14 +40,21 @@ struct Instagram {
                     let pathString = "/v1/users/" + userID + "/media/recent"
                     return (pathString, params)
                     
+                case .SearchUsers (let username, let accessToken):
+                    let params = ["q": username, "access_token": accessToken]
+                    let pathString = "/v1/users/search"
+                    return (pathString, params)
+                    
                 case .requestOauthCode:
-                    let pathString = "/oauth/authorize/?client_id=" + Router.clientID + "&redirect_uri=" + Router.redirectURI + "&response_type=code"
+                    let pathString = "/oauth/authorize/?client_id=" + Router.clientID + "&redirect_uri=" + Router.redirectURI + "&response_type=code&scope=public_content"
                     return (pathString, nil)
+                    
+                
                 }
             }()
             
-            let BaeseURL = NSURL(string: Router.baseURLString)!
-            let URLRequest = NSURLRequest(URL: BaeseURL.URLByAppendingPathComponent(result.path))
+            let BaseURL = NSURL(string: Router.baseURLString)!
+            let URLRequest = NSURLRequest(URL: BaseURL.URLByAppendingPathComponent(result.path))
             let encoding = Alamofire.ParameterEncoding.URL
             return encoding.encode(URLRequest, parameters: result.parameters).0
         }
