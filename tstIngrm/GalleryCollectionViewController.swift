@@ -26,6 +26,9 @@ class GalleryCollectionViewController: UICollectionViewController, UICollectionV
     var populatingPhotos = false
     var nextURLRequest: NSURLRequest?
     
+    let ImageHeight: CGFloat = 200.0
+    let OffsetSpeed: CGFloat = 5.0
+    
     let GalleryCellIdentifier = "GalleryCell"
     let GalleryFooterViewIdentifier = "GalleryFooterView"
 
@@ -43,10 +46,10 @@ class GalleryCollectionViewController: UICollectionViewController, UICollectionV
     }
     
     func setupView() {
-        setupCollectionViewLayout()
-        collectionView!.registerClass(GalleryCollectionViewCell.classForCoder(), forCellWithReuseIdentifier: GalleryCellIdentifier)
+        //setupCollectionViewLayout()
+        /*collectionView!.registerClass(GalleryCollectionViewCell.classForCoder(), forCellWithReuseIdentifier: GalleryCellIdentifier)*/
         collectionView!.registerClass(GalleryLoadingCollectionView.classForCoder(), forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: GalleryFooterViewIdentifier)
-        
+ 
         refreshControl.tintColor = UIColor.whiteColor()
         refreshControl.addTarget(self, action: #selector(GalleryCollectionViewController.handleRefresh), forControlEvents: .ValueChanged)
         collectionView!.addSubview(refreshControl)
@@ -104,7 +107,8 @@ class GalleryCollectionViewController: UICollectionViewController, UICollectionV
                         let indexPaths = (lastItem..<self.photos.count).map { NSIndexPath(forItem: $0, inSection: 0) }
                         
                         dispatch_async(dispatch_get_main_queue()) {
-                            self.collectionView!.insertItemsAtIndexPaths(indexPaths)
+                            //self.collectionView!.insertItemsAtIndexPaths(indexPaths)
+                            self.collectionView!.reloadData()
                         }
                         
                     }
@@ -119,6 +123,13 @@ class GalleryCollectionViewController: UICollectionViewController, UICollectionV
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let patternImage = UIImage(named: "Pattern") {
+            view.backgroundColor = UIColor(patternImage: patternImage)
+        }
+        collectionView!.backgroundColor = UIColor.clearColor()
+        collectionView!.decelerationRate = UIScrollViewDecelerationRateFast
+        
         setupView()
 
         // Uncomment the following line to preserve selection between presentations
@@ -148,10 +159,10 @@ class GalleryCollectionViewController: UICollectionViewController, UICollectionV
 
     // MARK: UICollectionViewDataSource
 
-    /*override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
-    }*/
+        return 1
+    }
 
 
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -197,11 +208,17 @@ class GalleryCollectionViewController: UICollectionViewController, UICollectionV
         //performSegueWithIdentifier("show photo", sender: ["photoInfo": photoInfo])
     }
     
-    override func scrollViewDidScroll(scrollView: UIScrollView) {
+    /*override func scrollViewDidScroll(scrollView: UIScrollView) {
         if (self.nextURLRequest != nil && scrollView.contentOffset.y + view.frame.size.height > scrollView.contentSize.height * 0.8) {
             populatePhotos(self.nextURLRequest!)
         }
-    }
+        /*if let visibleCells = collectionView!.visibleCells() as? [GalleryCollectionViewCell] {
+            for parallaxCell in visibleCells {
+                let yOffset = ((collectionView!.contentOffset.y - parallaxCell.frame.origin.y) / ImageHeight) * OffsetSpeed
+                parallaxCell.offset(CGPointMake(0.0, yOffset))
+            }
+        }*/
+    }*/
 
     // MARK: UICollectionViewDelegate
 
@@ -236,12 +253,14 @@ class GalleryCollectionViewController: UICollectionViewController, UICollectionV
 
 }
 
-class GalleryCollectionViewCell: UICollectionViewCell {
-    let imageView = UIImageView()
+/*class GalleryCollectionViewCell: UICollectionViewCell {
+    //let imageView = UIImageView()
     var photoInfo: PhotoInfo?
     
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var imageCoverView: UIView!
     
-    required init?(coder aDecoder: NSCoder) {
+    /*required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
@@ -251,9 +270,35 @@ class GalleryCollectionViewCell: UICollectionViewCell {
         backgroundColor = UIColor(white: 0.1, alpha: 1.0)
         
         imageView.frame = bounds
+        imageView.contentMode = .ScaleAspectFill
         addSubview(imageView)
+    }*/
+    
+    /*func offset(offset: CGPoint) {
+        imageView.frame = CGRectOffset(self.imageView.bounds, offset.x, offset.y)
+    }*/
+    
+    override func applyLayoutAttributes(layoutAttributes: UICollectionViewLayoutAttributes) {
+        super.applyLayoutAttributes(layoutAttributes)
+        
+        let featuredHeight = ParallaxLayoutConstants.Cell.featuredHeight
+        let standardHeight = ParallaxLayoutConstants.Cell.standardHeight
+        
+        let delta: CGFloat = 1 - ((featuredHeight - CGRectGetHeight(frame)) / (featuredHeight - standardHeight))
+        
+        let minAlpha: CGFloat = 0.3
+        let maxAlpha: CGFloat = 0.75
+        
+        imageCoverView!.alpha = maxAlpha - (delta * (maxAlpha - minAlpha))
+        
+        //let scale = max(delta, 0.5)
+        //titleLabel.transform = CGAffineTransformMakeScale(scale, scale)
+        
+        //timeAndRoomLabel.alpha = delta
+        //speakerLabel.alpha = delta
     }
-}
+    
+}*/
 
 class GalleryLoadingCollectionView: UICollectionReusableView {
     let spinner = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)

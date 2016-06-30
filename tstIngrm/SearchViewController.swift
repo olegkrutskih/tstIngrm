@@ -45,6 +45,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         /*if ((usernameField.text != nil) && (accessToken != nil)) {
             self.performSegueWithIdentifier("showGallery", sender: ["username": usernameField.text!, "accessToken": accessToken!])
         }*/
+        results.removeAll()
         let request = Instagram.Router.SearchUsers(usernameField.text!, accessToken!)
         print(request)
         searchUser(request)
@@ -128,10 +129,10 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         if segue.identifier == "showGallery" && segue.destinationViewController.isKindOfClass(GalleryCollectionViewController.classForCoder()) {
             let gViewController = segue.destinationViewController as! GalleryCollectionViewController
             
-            //let username = sender?.valueForKey("username") as? String
+            let uid = sender?.valueForKey("userID") as? String
             //let accessToken = sender?.valueForKey("accessToken") as? String
             
-            gViewController.userID = userID
+            gViewController.userID = uid
             gViewController.accessToken = accessToken
              
             
@@ -149,6 +150,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("searchViewCell", forIndexPath: indexPath) as! SearchTableCell
         cell.labelUsername.text = results[indexPath.row].username
+        cell.userID = results[indexPath.row].userID
         let sharedImageCache = FICImageCache.sharedImageCache()
         cell.imageUser.image = nil
         
@@ -175,15 +177,13 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         return results.count
     }
     
-    /*
-     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-     let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-     
-     // Configure the cell...
-     
-     return cell
-     }
-     */
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        //let username = sender?.valueForKey("username") as? String
+        //let accessToken = sender?.valueForKey("accessToken") as? String
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as! SearchTableCell
+        
+        self.performSegueWithIdentifier("showGallery", sender: ["userID": cell.userID!, "accessToken": accessToken!])
+    }
     
     /*
      // Override to support conditional editing of the table view.

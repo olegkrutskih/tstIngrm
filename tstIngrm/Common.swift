@@ -11,6 +11,15 @@ import Alamofire
 import UIKit
 import CoreData
 
+struct ParallaxLayoutConstants {
+    struct Cell {
+        /* non-featured cell */
+        static let standardHeight: CGFloat = 100
+        /* first visible cell */
+        static let featuredHeight: CGFloat = 280
+    }
+}
+
 struct Instagram {
     
     enum Router: URLRequestConvertible {
